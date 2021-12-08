@@ -27,10 +27,11 @@ export function findScheduled(time: number) {
 
       if (timeLeft - eventTime <= 0) {
         timeLeft -= setup;
-        if (timeLeft < 0) return [{ timeLeft: -timeLeft, name: `Setup - ${name}` }, 0];
-        for (let i = 0; i < reps; i++) {
+        if (timeLeft < 0) return [{ timeLeft: -timeLeft, name: `${name} (Setup)` }, 0];
+        for (let rep = 0; rep < reps; rep++) {
           timeLeft -= time;
-          if (timeLeft < 0) return [{ timeLeft: -timeLeft, name }, 0];
+          const suffix = reps > 1 ? ` (${rep + 1})` : "";
+          if (timeLeft < 0) return [{ timeLeft: -timeLeft, name: `${name} ${suffix}` }, 0];
           timeLeft -= pause;
           if (timeLeft < 0) return [{ timeLeft: -timeLeft, name: "Pause" }, 0];
         }
