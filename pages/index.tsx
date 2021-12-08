@@ -30,7 +30,7 @@ export default function Home() {
           </>
         )}
         <button
-          className="border-2 p-2 rounded m-4"
+          className="border-2 p-2 rounded m-4 bg-gray-50"
           onClick={() => {
             setTimeStarted(Date.now());
             setExercise(findScheduled(0));
