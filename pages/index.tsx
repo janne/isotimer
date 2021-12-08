@@ -11,7 +11,9 @@ export default function Home() {
       const untilNow = Math.round((Date.now() - timeStarted) / 1000);
       setExercise(findScheduled(untilNow));
     }, 1000);
-  });
+
+    return () => clearInterval(interval);
+  }, [timeStarted]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
